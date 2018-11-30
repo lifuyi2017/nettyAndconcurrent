@@ -97,9 +97,11 @@ public class MultiplexerTimeServer implements Runnable{
             if (key.isReadable()) {
                 // Read the data
                 SocketChannel sc = (SocketChannel) key.channel();
+                //从堆空间中分配一个容量大小为1024的byte数组作为缓冲区的byte数据存储器
                 ByteBuffer readBuffer = ByteBuffer.allocate(1024);
                 int readBytes = sc.read(readBuffer);
                 if (readBytes > 0) {
+                    //从写模式变成读模式
                     readBuffer.flip();
                     byte[] bytes = new byte[readBuffer.remaining()];
                     readBuffer.get(bytes);
