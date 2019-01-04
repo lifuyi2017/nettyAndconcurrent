@@ -46,10 +46,9 @@ public class TimeClient {
                         public void initChannel(SocketChannel ch)
                                 throws Exception {
                             //netty解码器LineBaseFrameDecoder、StringDecoder
-                            //linebaseframedecoder是以换行符为结束标记的解码器
+                            //linebaseframedecoder是以换行符为结束标记的解码器,也可以解决粘包问题
                             ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
                             ch.pipeline().addLast(new StringDecoder());
-
                             ch.pipeline().addLast(new TimeClientHandler());
                         }
                     });

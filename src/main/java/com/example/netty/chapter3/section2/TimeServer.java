@@ -64,7 +64,7 @@ public class TimeServer {
         @Override
         protected void initChannel(SocketChannel arg0) throws Exception {
             //netty解码器LineBaseFrameDecoder、StringDecoder
-            //linebaseframedecoder是以换行符为结束标记的解码器
+            //linebaseframedecoder是以换行符为结束标记的解码器,也可以解决粘包问题
             arg0.pipeline().addLast(new LineBasedFrameDecoder(1024));
             arg0.pipeline().addLast(new StringDecoder());
 
