@@ -22,7 +22,7 @@ public class Writer implements Runnable{
             pricesInfo.setPrices(Math.random()*10, Math.random()*8);
             System.out.printf("Writer: Prices have been modified.\n");
             try {
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

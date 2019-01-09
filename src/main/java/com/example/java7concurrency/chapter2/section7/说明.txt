@@ -1,0 +1,2 @@
+修改Lock的公平性
+http://ifeve.com/basic-thread-synchronization-7/

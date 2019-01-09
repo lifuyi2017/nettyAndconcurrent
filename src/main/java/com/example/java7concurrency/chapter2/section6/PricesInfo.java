@@ -22,22 +22,34 @@ public class PricesInfo {
 
     public double getPrice1() {
         lock.readLock().lock();
+        System.out.println("price1被线程"+Thread.currentThread().getName()+"获取读锁");
         double value=price1;
+        System.out.println("***********************************"+value);
+        System.out.println("price1被线程"+Thread.currentThread().getName()+"释放读锁");
         lock.readLock().unlock();
         return value;
     }
 
     public double getPrice2() {
+
         lock.readLock().lock();
+        System.out.println("price2被线程"+Thread.currentThread().getName()+"获取读锁");
         double value=price2;
+        System.out.println("***********************************"+value);
+        System.out.println("price2被线程"+Thread.currentThread().getName()+"释放读锁");
         lock.readLock().unlock();
         return value;
+
     }
 
     public void setPrices(double price1, double price2){
         lock.writeLock().lock();
+        System.out.println("获取写锁");
         this.price1=price1;
+        System.out.println("***********************************"+price1);
         this.price2=price2;
+        System.out.println("***********************************"+price2);
+        System.out.println("释放写锁");
         lock.writeLock().unlock();
     }
 

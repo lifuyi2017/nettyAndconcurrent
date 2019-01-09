@@ -33,6 +33,7 @@ public class ImConnection {
             bootstrap.group(workerGroup)
                     .channel(NioSocketChannel.class)
                     .option(ChannelOption.SO_KEEPALIVE, true)
+                    //handler在初始化时就会执行，而childHandler会在客户端成功connect后才执行，这是两者的区别
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
